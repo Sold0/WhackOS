@@ -1,10 +1,16 @@
-org 0x7C00
+org 0x0
 bits 16
 
 %define ENDL 0x0D, 0x0A
 
 start:
-    jmp main
+    ; print message
+    mov si, msg_hello
+    call puts
+
+.halt:
+    cli
+    hlt
 
 ;
 ; Prints a string to the screen.
@@ -32,27 +38,4 @@ puts:
     pop si
     ret
 
-
-main:
-    ; setup data segments
-    mov ax, 0           ; because we cannot write to ds/es directly
-    mov ds, ax
-    mov es, ax
-
-    ; setup stack
-    mov ss, ax
-    mov sp, 0x7C00      ; stack grows downwards from where we are loaded in memory
-
-    ; print message
-    mov si, msg_hello
-    call puts
-
-    hlt
-
-.halt:
-    jmp .halt
-
-msg_hello: db 'Hello operating system!', ENDL, 0
-
-times 510-($-$$) db 0
-dw 0AA55h
+msg_hello: db 'Hello operating system! The KERNEL is loaded.', ENDL, 0
