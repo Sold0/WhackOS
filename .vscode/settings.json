@@ -1,0 +1,18 @@
+{
+  "C_Cpp.default.compileCommands": "",
+  "C_Cpp.default.compilerPath": "/opt/watcom/binl64/wcc",
+  "C_Cpp.default.compilerArgs": [
+    "-d3",
+    "-s",
+    "-wx",
+    "-ms",
+    "-zl",
+    "-zq",
+    "-fr=$(BUILD_DIR)/build.error"
+  ],
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.default.defines": [
+    "_cdecl="
+  ],
+  "C_Cpp.default.cStandard": "c99"
+}
